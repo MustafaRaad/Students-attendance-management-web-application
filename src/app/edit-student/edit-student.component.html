@@ -1,0 +1,71 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom container">
+  <h1 class="h2">Edit Student Details</h1>
+  <div class="btn-toolbar mb-3 mb-md-0">
+    <div class="btn-group">
+      <!-- goBack() me+cthos to back to previous component -->
+      <button class="btn btn-sm btn-outline-secondary" (click)="goBack()">Go Back</button>
+    </div>
+  </div>
+</div>
+<div class="container jumbotron">
+
+  <div class="row">
+    <div class="col-12">
+      <div class="pricing-header form-block mx-auto">
+        <!-- ------------ Student's Edit Form -->
+        <form [formGroup]="editForm" (ngSubmit)="updateForm()" novalidate>
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <!-- ----------------- names -->
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <label>First name</label>
+                <input type="text" formControlName="firstName" class="form-control" required>
+                <p *ngIf="firstName.touched && firstName.invalid" class="error"><sup>*</sup>Please enter first name</p>
+                <p *ngIf="firstName.errors?.minlength" class="error"><sup>*</sup>Name shouldn't be less than 2 words</p>
+              </div>
+              <div class="col-md-12 mb-3">
+                <label>Last name</label>
+                <input type="text" formControlName="lastName" class="form-control">
+              </div>
+            </div>
+            <!-- ------------ -->
+            <div class="row">
+              <!-- --------department selection -->
+              <div class="col-md-12 mb-3">
+                <label>Department</label>
+                <select class="custom-select " formControlName="department" class="form-control" required>
+                  <option value="BIT">BIT (Business Informatics Technology)</option>
+                  <option value="ISM">ISM (Information Systems Management)</option>
+                </select>
+                <p *ngIf="department.touched && department.invalid" class="error"><sup>*</sup>Please provide department</p>
+                <p *ngIf="department.errors?.pattern" class="error"><sup>*</sup>Please enter correct department</p>
+              </div>
+              <!-- --------stage selection -->
+              <div class="col-md-12 mb-3">
+                <label>Stage</label>
+                <select class="custom-select " formControlName="stage" class="form-control" required>
+                  <option value="1">1 - one</option>
+                  <option value="2">2 - two</option>
+                  <option value="3">3 - three</option>
+                  <option value="4">4 - four</option>
+                </select>
+                <p *ngIf="stage.touched && stage.invalid" class="error"><sup>*</sup>Please provide stage
+                  number</p>
+                <p *ngIf="stage.errors?.pattern" class="error"><sup>*</sup>Use numbers only
+                  number</p>
+              </div>
+            </div>
+            <!-- --------------buttons -->
+            <div class="form-group text-center container">
+              <button type="submit" class="btn btn-lg btn-success btn-block" [disabled]="!editForm.valid">Update
+                Student</button>
+              </div>
+          </div>
+        </div>
+      </form><!-- Student's Edit Form ends-->
+      
+    </div>
+  </div>
+</div>
+</div>

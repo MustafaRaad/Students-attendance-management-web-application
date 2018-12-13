@@ -23,7 +23,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@fortawesome/fontawesome-free-webfonts/css/fontawesome.css",
+              "node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-regular.css",
+              "node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-brands.css",
+              "node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-solid.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           },
@@ -105,7 +111,7 @@
     "absence-e2e": {
       "root": "e2e/",
       "projectType": "application",
-      "prefix": "",
+      "prefix": "attendance",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",

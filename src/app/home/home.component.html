@@ -1,31 +1,25 @@
-<div class="row">
-  <div class="col-md-3 col-md-offset-1">
-    <img class="img" src="../assets/imgs/1.png" alt="UITC Logo" />
+<div class="container-fluid jumbotron">
+  <!-- ----------------------logos -->
+  <div class="row justify-content-between">
+
+    <div class="col-2 ">
+      <img class="img logos" src="../assets/imgs/2.png" alt="UITC Logo" />
+    </div>
+
+    <div class="col-2 ">
+      <img class="img logos bic" src="../assets/imgs/1.png" alt="BIC Logo" />
+    </div>
+
   </div>
-  <div class="col-md-3 col-md-offset-5">
-    <img
-      class="img"
-      src="../assets/imgs/2.png"
-      alt="BIC
-      Logo"
-    />
-  </div>
-  <span class="col-md-7 col-sm-4"></span>
-</div>
-<div class=" container">
-  <div class="jumbotron">
-    <h1 class="text-center jumbotron">Welcome !</h1>
-    <p class="text-center">
-      Absence lists of Universty of Information Technology and Communications
-    </p>
-  </div>
-  <div class="btn-group btn-group-justified" role="group">
-    <a class="btn btn-primary btn-lg col-md-3" href="#" role="button">Log in</a>
-    <a
-      class="btn btn-primary btn-lg col-md-3 col-md-offset-6"
-      href="#"
-      role="button"
-      >Show Departments</a
-    >
+  <!-- -------------------------welcoming   -->
+  <div class="">
+    <h1 class="display-2 text-center">Welcome to</h1>
+    <hr class="col-4 my-5">
+    <p class="bold display-4 text-center">Universty of Information Technology and Communications</p>
+    <p class="lead text-center">Student attendance of Business Informatics College</p>
+    <hr class="my-5">
+
+    <a class="btn btn-primary btn-lg btn-block " [routerLink]="[ '/dep' ]" role="button">Show Departments</a>
+    <a class="btn btn-info btn-lg btn-block" [routerLink]="[ '/login' ]" role="button">Log in</a>
   </div>
 </div>

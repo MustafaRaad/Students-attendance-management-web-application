@@ -1,5 +1,11 @@
 
-.img {
-  margin: 15px;
-  width: 300px;
+.logos{
+  margin: 3% 3% 3% 15%;
+  width: 200px;
+  height: 200px;
+}
+
+.jumbotron{
+  background-color:#dfdfdf;
+  margin-bottom: -1%;
 }

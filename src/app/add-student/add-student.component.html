@@ -1,0 +1,57 @@
+<div class="pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2"><i class="fas fa-plus"></i><b> Add Student</b></h1>
+</div>
+
+<form [formGroup]="studentForm" (ngSubmit)="submitStudentData()" novalidate>
+  <!-- -------- names unputs -->
+  <div class="row jumbotron">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <label>First name</label>
+          <input type="text" formControlName="firstName" class="form-control" placeholder="Student name" required>
+          <p *ngIf="firstName.touched && firstName.invalid" class="error"><sup>*</sup>Please enter first name</p>
+          <p *ngIf="firstName.errors?.minlength" class="error"><sup>*</sup>Name shouldn't be less than 2 words</p>
+        </div>
+        <div class="col-md-12 mb-3">
+          <label>Last name</label>
+          <input type="text" formControlName="lastName" placeholder="Rest of name" class="form-control">
+        </div>
+      </div>
+      <!-- --------------- -->
+      <div class="row">
+        <!-- --------department selection -->
+        <div class="col-md-12 mb-3">
+          <label>Department</label>
+          <select class="custom-select " formControlName="department" class="form-control" required>
+            <option value="BIT">BIT (Business Informatics Technology)</option>
+            <option value="ISM">ISM (Information Systems Management)</option>
+          </select>
+          <p *ngIf="department.touched && department.invalid" class="error"><sup>*</sup>Please provide department</p>
+          <p *ngIf="department.errors?.pattern" class="error"><sup>*</sup>Please enter correct department</p>
+        </div>
+        <!-- --------stage selection -->
+        <div class="col-md-12 mb-3">
+          <label>Stage</label>
+          <select class="custom-select " formControlName="stage" class="form-control" required>
+            <option value="1">1 - one</option>
+            <option value="2">2 - two</option>
+            <option value="3">3 - three</option>
+            <option value="4">4 - four</option>
+          </select>
+          <p *ngIf="stage.touched && stage.invalid" class="error"><sup>*</sup>Please provide stage
+            number</p>
+          <p *ngIf="stage.errors?.pattern" class="error"><sup>*</sup>Use numbers only
+            number</p>
+        </div>
+      </div>
+      <!-- ----------buttons -->
+      <div class="text-center container">
+        <button type="submit" class="btn btn-block btn-lg btn-success my-2" [disabled]="!studentForm.valid"><i class="fas fa-plus"></i>
+          Add new student</button>
+        <button type="button" class="col-2 btn btn-lg btn-secondary my-2" (click)="ResetForm()"><i class="fas fa-redo-alt"></i>
+          Reset</button>
+      </div>
+    </div>
+  </div>
+</form>
