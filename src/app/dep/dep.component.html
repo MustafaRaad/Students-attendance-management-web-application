@@ -1,3 +1,49 @@
-<p>
-  dep works!
-</p>
+<div class="d-flex justify-content-around flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2"><i class="fas fa-list-alt"></i><b> Students List</b></h1>
+  <!-- It won't show if there is no student data -->
+  <h3 class="">
+    BIT
+  </h3>
+</div>
+
+<div class="pricing-header row justify-content-center">
+
+  <!-- No data shows when their is no student data available -->
+  <div class="no-data text-center" *ngIf="noData">
+    <p class="nodata-msg">No student added yet!</p>
+  </div>
+
+  <!-- Showing students data -->
+  <div class="table-responsive col-11" *ngIf="hideWhenNoStudent">
+    <table class="table table-bordered table-light table-hover table-responsive-sm table-responsive-md table-responsive-lg">
+      <thead>
+        <tr>
+          <th scope="col">Student name</th>
+          <th scope="col">Lect 1</th>
+          <th scope="col">Lect 2</th>
+          <th scope="col">Lect 3</th>
+          <th scope="col">Lect 4</th>
+          <th scope="col">Lect 5</th>
+          <th scope="col">Lect 6</th>
+          <th scope="col">Lect 7</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- *ngFor loop iterates over Student array and fetch the student's data -->
+        <!-- paginate pipe will add pagination in student's list, it won't show if items are less then 7 -->
+        <tr *ngFor="let student of Student| paginate: { itemsPerPage: 10, currentPage: p }; let i = index;">
+          <td>{{student.firstName}} {{student.lastName}}</td>
+          <td>none</td>
+          <td>none</td>
+          <td>none</td>
+          <td>none</td>
+          <td>none</td>
+          <td>none</td>
+          <td>none</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Pagination -->
+  <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
+</div>

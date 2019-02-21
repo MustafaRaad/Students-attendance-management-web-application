@@ -17,6 +17,9 @@ import { AddStudentComponent } from './add-student/add-student.component';
 import { EditStudentComponent } from './edit-student/edit-student.component';
 import { LecComponent } from './lec/lec.component';
 import { StudentsListComponent } from './students-list/students-list.component';
+import { AddLecturerComponent } from './add-lecturer/add-lecturer.component';
+import { EditLecturerComponent } from './edit-lecturer/edit-lecturer.component';
+import { LecturersListComponent } from './lecturers-list/lecturers-list.component';
 
 
 const routes: Routes = [
@@ -25,10 +28,13 @@ const routes: Routes = [
   { path: "dep", component: DepComponent },
   { path: "login", component: LoginComponent },
   { path: "admin", component: AdminComponent },
-  { path: 'lec', component: LecComponent },
+  { path: 'lecturers', component: LecComponent },
   { path: 'register-student', component: AddStudentComponent },
   { path: 'view-students', component: StudentsListComponent },
   { path: 'edit-student/:id', component: EditStudentComponent },
+  { path: 'register-lecturer', component: AddLecturerComponent },
+  { path: 'view-lecturers', component: LecturersListComponent },
+  { path: 'edit-lecturer/:id', component: EditLecturerComponent },
 ];
 // Import RouterModule and inject routes array in it and dont forget to export the RouterModule
 @NgModule({
