@@ -7,15 +7,16 @@
   <div class="row jumbotron">
     <div class="col-12">
       <div class="row">
-        <div class="col-md-12 mb-3">
-          <label>First name</label>
+        <div class="col-md-1 mb-2">
+          <select class="custom-select form-control" formControlName="title" required>
+            <option value="Mr. " selected>Mr.</option>
+            <option value="Mrs. ">Mrs.</option>
+          </select>
+        </div>
+        <div class="col-md-11 mb-2">
           <input type="text" formControlName="firstName" class="form-control" placeholder="Lecturer name" required>
           <p *ngIf="firstName.touched && firstName.invalid" class="error"><sup>*</sup>Please enter first name</p>
           <p *ngIf="firstName.errors?.minlength" class="error"><sup>*</sup>Name shouldn't be less than 2 words</p>
-        </div>
-        <div class="col-md-12 mb-3">
-          <label>Last name</label>
-          <input type="text" formControlName="lastName" placeholder="Rest of name" class="form-control">
         </div>
       </div>
       <!-- --------------- -->

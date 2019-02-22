@@ -23,7 +23,7 @@
         <!-- --------department selection -->
         <div class="col-md-12 mb-3">
           <label>Department</label>
-          <select class="custom-select " formControlName="department" class="form-control" required>
+          <select class="custom-select form-control" formControlName="department" required>
             <option value="BIT">BIT (Business Informatics Technology)</option>
             <option value="ISM">ISM (Information Systems Management)</option>
           </select>
@@ -33,7 +33,7 @@
         <!-- --------stage selection -->
         <div class="col-md-12 mb-3">
           <label>Stage</label>
-          <select class="custom-select " formControlName="stage" class="form-control" required>
+          <select class="custom-select form-control" formControlName="stage" required>
             <option value="1">1 - one</option>
             <option value="2">2 - two</option>
             <option value="3">3 - three</option>
@@ -41,13 +41,12 @@
           </select>
           <p *ngIf="stage.touched && stage.invalid" class="error"><sup>*</sup>Please provide stage
             number</p>
-          <p *ngIf="stage.errors?.pattern" class="error"><sup>*</sup>Use numbers only
-            number</p>
         </div>
       </div>
       <!-- ----------buttons -->
       <div class="text-center container">
-        <button type="submit" class="btn btn-block btn-lg btn-success my-2" [disabled]="!studentForm.valid"><i class="fas fa-plus"></i>
+        <button type="submit" (click)="submitStudentData()" class="btn btn-block btn-lg btn-success my-2" [disabled]="!studentForm.valid"><i
+            class="fas fa-plus"></i>
           Add new student</button>
         <button type="button" class="col-2 btn btn-lg btn-secondary my-2" (click)="ResetForm()"><i class="fas fa-redo-alt"></i>
           Reset</button>

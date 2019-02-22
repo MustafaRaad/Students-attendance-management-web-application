@@ -18,6 +18,7 @@ import { ToastrModule } from 'ngx-toastr';
 // NGX Pagination
 import { NgxPaginationModule } from 'ngx-pagination';
 
+
 // Reactive Form Module
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -37,6 +38,7 @@ import { StudentsListComponent } from './students-list/students-list.component';
 import { AddLecturerComponent } from './add-lecturer/add-lecturer.component';
 import { EditLecturerComponent } from './edit-lecturer/edit-lecturer.component';
 import { LecturersListComponent } from './lecturers-list/lecturers-list.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -72,6 +74,7 @@ import { LecturersListComponent } from './lecturers-list/lecturers-list.componen
     ReactiveFormsModule,
     NgxPaginationModule,  // NGX pagination module
     FormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

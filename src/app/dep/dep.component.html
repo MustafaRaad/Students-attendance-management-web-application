@@ -1,14 +1,33 @@
-<div class="d-flex justify-content-around flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2"><i class="fas fa-list-alt"></i><b> Students List</b></h1>
-  <!-- It won't show if there is no student data -->
-  <h3 class="">
-    BIT
-  </h3>
+<!-- choises of shown data -->
+<div class="container">
+  <div class="row justify-content-center head">
+    <div class="input-group input-group-lg col-8">
+      <div class="input-group-prepend ">
+        <label class="input-group-text" formControlName="department" for="department">Department to show</label>
+      </div>
+      <select class="custom-select" id="department">
+        <option selected value="BIT">BIT (Business Informatics Technology)</option>
+        <option value="ISM">ISM (Information Systems Management)</option>
+      </select>
+    </div>
+
+    <div class="input-group input-group-lg col-4">
+      <select class="custom-select" id="stage">
+        <option selected value="1">Stage 1</option>
+        <option value="2">Stage 2</option>
+        <option value="3">Stage 3</option>
+        <option value="4">Stage 4</option>
+      </select>
+      <div class="input-group-append">
+        <label class="input-group-text" for="stage">Satge to show</label>
+      </div>
+    </div>
+  </div>
 </div>
-
+<hr class="my-4 col-8">
+<!-- -------------------------------------- -->
+<!-- No data shows when their is no student data available -->
 <div class="pricing-header row justify-content-center">
-
-  <!-- No data shows when their is no student data available -->
   <div class="no-data text-center" *ngIf="noData">
     <p class="nodata-msg">No student added yet!</p>
   </div>
