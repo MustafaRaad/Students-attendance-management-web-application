@@ -2,69 +2,96 @@
   <h1 class="h2"><i class="fas fa-plus"></i><b> Add Lecturer</b></h1>
 </div>
 
-<form [formGroup]="studentForm" (ngSubmit)="submitStudentData()" novalidate>
-  <!-- -------- names unputs -->
+<form [formGroup]="lecturerForm" (ngSubmit)="submitLecturerData()" novalidate>
+  <!-- -------- names inputs -->
   <div class="row jumbotron">
     <div class="col-12">
       <div class="row">
-        <div class="col-md-1 mb-2">
+        <div class="input-group col-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text" for="title" id="title">Title</span>
+          </div>
           <select class="custom-select form-control" formControlName="title" required>
             <option value="Mr. " selected>Mr.</option>
             <option value="Mrs. ">Mrs.</option>
           </select>
         </div>
-        <div class="col-md-11 mb-2">
-          <input type="text" formControlName="firstName" class="form-control" placeholder="Lecturer name" required>
+        <div class="input-group col-10">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="name">Name</span>
+          </div>
+          <input type="text" formControlName="name" class="form-control" placeholder="Lecturer full name" required>
           <p *ngIf="firstName.touched && firstName.invalid" class="error"><sup>*</sup>Please enter first name</p>
           <p *ngIf="firstName.errors?.minlength" class="error"><sup>*</sup>Name shouldn't be less than 2 words</p>
         </div>
       </div>
-      <!-- --------------- -->
+      <!-- -------------------------------------- -->
+      <hr class="my-5 col-7">
       <div class="row">
-        <!-- --------department selection -->
-        <div class="col-md-12 mb-3 ">
+        <div class="input-group col-6">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="email">Email</span>
+          </div>
+          <input type="email" formControlName="email" class="form-control" placeholder="Lecturer Email" required>
+        </div>
+        <div class="input-group col-6">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="password">Password</span>
+          </div>
+          <input type="password" formControlName="password" class="form-control" placeholder="Lecturer Password"
+            required>
+        </div>
+      </div>
+      <!-- ------------------------- -->
+      <hr class="my-5 col-8">
+      <!-- --------department selection -->
+      <div class="row justify-content-center">
+        <div class="col-11 ">
           <label>Department Privilages</label>
-          <div class="row justify-content-around" formControlName="department" required>
-            <div class="col-4 text-center btn-primary">
-              <input type="checkbox" id="autoSizingCheck1" value="BIT">
-              <label class="form-check-label" for="autoSizingCheck1"> BIT (Business Informatics Technology)</label>
+          <div class="row justify-content-center" formControlName="department" id="department" required>
+            <div class="col-4 text-center item">
+              <input type="checkbox" id="BIT" value="BIT">
+              <label class="form-check-label" for="BIT"> BIT (Business Informatics Technology)</label>
             </div>
-            <div class="col-4 text-center btn-primary">
-              <input type="checkbox" id="autoSizingCheck2" value="ISM">
-              <label class="form-check-label" for="autoSizingCheck2"> ISM (Information Systems Management)</label>
+            <div class="col-4 text-center item">
+              <input type="checkbox" id="ISM" value="ISM">
+              <label class="form-check-label" for="ISM"> ISM (Information Systems Management)</label>
             </div>
             <p *ngIf="department.touched && department.invalid" class="error"><sup>*</sup>Please provide department</p>
             <p *ngIf="department.errors?.pattern" class="error"><sup>*</sup>Please enter correct department</p>
           </div>
           <!-- --------stage selection -->
+          <hr class="my-5 col-8">
           <label class="">Stage Privilages</label>
-          <div class="row justify-content-start" formControlName="stage" required>
+          <div class="row justify-content-around" formControlName="stage" id="stage" required>
 
-            <div class="col-1 text-center">
-              <input type="checkbox" id="autoSizingCheck11" value="1">
-              <label class="form-check-label" for="autoSizingCheck11">Stage 1</label>
+            <div class="col-2 text-center item">
+              <input type="checkbox" id="1" value="1">
+              <label class="form-check-label" for="1">Stage 1</label>
             </div>
 
-            <div class="col-1 text-center">
-              <input type="checkbox" id="autoSizingCheck12" value="2">
-              <label class="form-check-label" for="autoSizingCheck12">Stage 2</label>
+            <div class="col-2 text-center item">
+              <input type="checkbox" id="2" value="2">
+              <label class="form-check-label" for="2">Stage 2</label>
             </div>
-            <div class="col-1 text-center">
-              <input type="checkbox" id="autoSizingCheck13" value="3">
-              <label class="form-check-label" for="autoSizingCheck13">Stage 3</label>
+            <div class="col-2 text-center item">
+              <input type="checkbox" id="3" value="3">
+              <label class="form-check-label" for="3">Stage 3</label>
             </div>
-            <div class="col-1 text-center">
-              <input type="checkbox" id="autoSizingCheck14" value="4">
-              <label class="form-check-label" for="autoSizingCheck14">Stage 4</label>
+            <div class="col-2 text-center item">
+              <input type="checkbox" id="4" value="4">
+              <label class="form-check-label" for="4">Stage 4</label>
             </div>
           </div>
         </div>
       </div>
+      <hr class="my-5 col-8">
       <!-- ----------buttons -->
       <div class="text-center container">
-        <button type="submit" class="btn btn-block btn-lg btn-success my-2" [disabled]="!studentForm.valid"><i class="fas fa-plus"></i>
+        <button type="submit" (click)="submitLecturerData()" class="btn btn-block btn-lg btn-success my-2" [disabled]="!lecturerForm.valid"><i
+            class="fas fa-plus"></i>
           Add new lecturer</button>
-        <button type="reset" class="col-2 btn btn-lg btn-secondary my-2" (click)="ResetForm()"><i class="fas fa-redo-alt"></i>
+        <button type="button" class="col-2 btn btn-lg btn-secondary my-2" (click)="ResetForm()"><i class="fas fa-redo-alt"></i>
           Reset</button>
       </div>
     </div>

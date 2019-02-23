@@ -32,6 +32,8 @@ export class CrudService {
       name: lecturer.name,
       department: lecturer.department,
       stage: lecturer.stage,
+      email: lecturer.email,
+      password: lecturer.password,
     })
   }
 

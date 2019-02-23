@@ -1,0 +1,10 @@
+#department,#stage{
+border-radius: 7px;
+padding: 7px;
+}
+.item{
+  border-radius: 6px;
+  box-shadow: 0px 4px 1px #1f6169;
+   margin:6px;
+}
+
