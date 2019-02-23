@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../shared/crud.service';  // CRUD API service class
-import { Student } from './../shared/student';   // Student interface class for Data types.
+import { Student } from '../shared/student';   // Student interface class for Data types.
 import { ToastrService } from 'ngx-toastr';      // Alert message using NGX toastr
 
 @Component({
-  selector: 'app-dep',
-  templateUrl: './dep.component.html',
-  styleUrls: ['./dep.component.css']
+  selector: 'app-attendance',
+  templateUrl: './attendance.component.html',
+  styleUrls: ['./attendance.component.css']
 })
-export class DepComponent implements OnInit {
+export class attendanceComponent implements OnInit {
   p: number = 1;                      // Fix for AOT compilation error for NGX pagination
   Student: Student[];                 // Save students data in Student's array.
   hideWhenNoStudent: boolean = false; // Hide students data table when no student.
