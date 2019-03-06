@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LecComponent } from './lec.component';
+import { AbsenceComponent } from './absence.component';
 
-describe('LecComponent', () => {
-  let component: LecComponent;
-  let fixture: ComponentFixture<LecComponent>;
+describe('AbsenceComponent', () => {
+  let component: AbsenceComponent;
+  let fixture: ComponentFixture<AbsenceComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LecComponent ]
+      declarations: [ AbsenceComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LecComponent);
+    fixture = TestBed.createComponent(AbsenceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

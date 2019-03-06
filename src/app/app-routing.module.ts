@@ -8,16 +8,15 @@ import { ReactiveFormsModule } from '@angular/forms';  // Reactive Form Module
 
 // Include components for in which router service to be used
 import { AppComponent } from "./app.component";
-import { NavbarComponent } from "./navbar/navbar.component";
+import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from "./home/home.component";
 import { attendanceComponent } from "./attendance/attendance.component";
 import { LoginComponent } from "./login/login.component";
 import { AdminComponent } from './admin/admin.component';
 import { AddStudentComponent } from './add-student/add-student.component';
 import { EditStudentComponent } from './edit-student/edit-student.component';
-import { LecComponent } from './lec/lec.component';
 import { StudentsListComponent } from './students-list/students-list.component';
-import { AddLecturerComponent } from './add-lecturer/add-lecturer.component';
+import { AddLecturerComponent } from "./add-lecturer/add-lecturer.component";
 import { EditLecturerComponent } from './edit-lecturer/edit-lecturer.component';
 import { LecturersListComponent } from './lecturers-list/lecturers-list.component';
 
@@ -28,7 +27,6 @@ const routes: Routes = [
   { path: "attendance", component: attendanceComponent },
   { path: "login", component: LoginComponent },
   { path: "admin", component: AdminComponent },
-  { path: 'lecturers', component: LecComponent },
   { path: 'register-student', component: AddStudentComponent },
   { path: 'view-students', component: StudentsListComponent },
   { path: 'edit-student/:id', component: EditStudentComponent },

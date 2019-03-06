@@ -14,7 +14,7 @@
 
   <h1 class="display-2 text-center">Sign in as a lecturer</h1>
   <hr class=" col-9 my-5">
-  <form action="" method="POST" class="container jumbotron">
+  <div class="container jumbotron" onSubmit={this.login()}>
     <div class="form-group row">
       <label for="email" class="col-sm-2 col-form-label">Email</label>
       <div class="col-sm-10">
@@ -30,11 +30,11 @@
 
     <div class="form-group row text-right">
       <div class="col-12 my-2">
-        <button type="submit" class="btn btn-lg btn-success btn-block" (click)="tryLogin()">Sign in</button>
+        <button type="submit" class="btn btn-lg btn-success btn-block" (click)="login()">Sign in</button>
       </div>
       <div class="col-3 my-2">
         <button type="button" class="btn btn-lg btn-secondary ">Forgot password ?</button>
       </div>
     </div>
-  </form>
+  </div>
 </div>

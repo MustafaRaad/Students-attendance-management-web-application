@@ -4,12 +4,19 @@ import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 
 // ------------------------firebase
-import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+import firebase from '@firebase/app';
+import { FirebaseApp as _FirebaseApp, FirebaseOptions, FirebaseAppConfig } from '@firebase/app-types';
+import { FirebaseAuth } from '@firebase/auth-types';
+import { FirebaseDatabase } from '@firebase/database-types';
+import { FirebaseMessaging } from '@firebase/messaging-types';
+import { FirebaseStorage } from '@firebase/storage-types';
+import { FirebaseFirestore } from '@firebase/firestore-types';
+import { FirebaseOptionsToken, FirebaseNameOrConfigToken, AngularFireModule } from '@angular/fire';
 
 // Toaster for Alert Messages
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -33,13 +40,37 @@ import { LoginComponent } from "./login/login.component";
 import { AdminComponent } from './admin/admin.component';
 import { AddStudentComponent } from './add-student/add-student.component';
 import { EditStudentComponent } from './edit-student/edit-student.component';
-import { LecComponent } from './lec/lec.component';
 import { StudentsListComponent } from './students-list/students-list.component';
-import { AddLecturerComponent } from './add-lecturer/add-lecturer.component';
+import { AddLecturerComponent } from "./add-lecturer/add-lecturer.component";
 import { EditLecturerComponent } from './edit-lecturer/edit-lecturer.component';
 import { LecturersListComponent } from './lecturers-list/lecturers-list.component';
-import { from } from 'rxjs';
+import { AbsenceComponent } from './absence/absence.component';
 
+// ---------------
+
+export class FirebaseApp implements _FirebaseApp {
+  name: string;
+  automaticDataCollectionEnabled: boolean;
+  options: {};
+  auth: () => FirebaseAuth;
+  database: (databaseURL?: string) => FirebaseDatabase;
+  messaging: () => FirebaseMessaging;
+  storage: (storageBucket?: string) => FirebaseStorage;
+  delete: () => Promise<void>;
+  firestore: () => FirebaseFirestore;
+}
+
+export function _firebaseAppFactory(options: FirebaseOptions, name?: string, appConfig?: FirebaseAppConfig): FirebaseApp {
+  const config = appConfig || {};
+  if (name && config.name && config.name !== name) {
+      console.warn('FirebaseAppNameToken and FirebaseAppConfigToken.name don\'t match, FirebaseAppNameToken takes precedence.');
+  }
+  config.name = name || config.name || '[DEFAULT]';
+  const existingApp = firebase.apps.filter(app => app.name === config.name)[0];
+  return (existingApp || firebase.initializeApp(options, config)) as FirebaseApp;
+}
+
+// -----------
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,11 +81,11 @@ import { from } from 'rxjs';
     AdminComponent,
     AddStudentComponent,
     EditStudentComponent,
-    LecComponent,
     StudentsListComponent,
     AddLecturerComponent,
     EditLecturerComponent,
-    LecturersListComponent
+    LecturersListComponent,
+    AbsenceComponent
   ],
   imports: [BrowserModule,
     AppRoutingModule,
@@ -76,7 +107,7 @@ import { from } from 'rxjs';
     FormsModule,
 
   ],
-  providers: [],
+  providers: [{ provide: FirebaseNameOrConfigToken, useValue: environment.firebase }, {provide: FirestoreSettingsToken, useValue: {}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

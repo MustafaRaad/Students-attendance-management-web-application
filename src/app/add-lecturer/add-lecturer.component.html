@@ -2,11 +2,11 @@
   <h1 class="h2"><i class="fas fa-plus"></i><b> Add Lecturer</b></h1>
 </div>
 
-<form [formGroup]="lecturerForm" (ngSubmit)="submitLecturerData()" novalidate>
-  <!-- -------- names inputs -->
-  <div class="row jumbotron">
-    <div class="col-12">
-      <div class="row">
+<!-- <form [formGroup]="lecturerForm" (ngSubmit)="submitLecturerData()" novalidate> -->
+<!-- -------- names inputs -->
+<div class="row jumbotron" >
+  <div class="col-12">
+    <!-- <div class="row">
         <div class="input-group col-2">
           <div class="input-group-prepend">
             <span class="input-group-text" for="title" id="title">Title</span>
@@ -24,28 +24,27 @@
           <p *ngIf="firstName.touched && firstName.invalid" class="error"><sup>*</sup>Please enter first name</p>
           <p *ngIf="firstName.errors?.minlength" class="error"><sup>*</sup>Name shouldn't be less than 2 words</p>
         </div>
-      </div>
-      <!-- -------------------------------------- -->
-      <hr class="my-5 col-7">
-      <div class="row">
-        <div class="input-group col-6">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="email">Email</span>
-          </div>
-          <input type="email" formControlName="email" class="form-control" placeholder="Lecturer Email" required>
+      </div> -->
+    <!-- -------------------------------------- -->
+    <hr class="my-5 col-7">
+    <div class="row">
+      <div class="input-group col-6">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="email">Email</span>
         </div>
-        <div class="input-group col-6">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="password">Password</span>
-          </div>
-          <input type="password" formControlName="password" class="form-control" placeholder="Lecturer Password"
-            required>
-        </div>
+        <input type="email" class="form-control" id="email" placeholder="Email" [(ngModel)]="email">
       </div>
-      <!-- ------------------------- -->
-      <hr class="my-5 col-8">
-      <!-- --------department selection -->
-      <div class="row justify-content-center">
+      <div class="input-group col-6">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="password">Password</span>
+        </div>
+        <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="password">
+      </div>
+    </div>
+    <!-- ------------------------- -->
+    <hr class="my-5 col-8">
+    <!-- --------department selection -->
+    <!-- <div class="row justify-content-center">
         <div class="col-11 ">
           <label>Department Privilages</label>
           <div class="row justify-content-center" formControlName="department" id="department" required>
@@ -59,9 +58,9 @@
             </div>
             <p *ngIf="department.touched && department.invalid" class="error"><sup>*</sup>Please provide department</p>
             <p *ngIf="department.errors?.pattern" class="error"><sup>*</sup>Please enter correct department</p>
-          </div>
-          <!-- --------stage selection -->
-          <hr class="my-5 col-8">
+          </div> -->
+    <!-- --------stage selection -->
+    <!-- <hr class="my-5 col-8">
           <label class="">Stage Privilages</label>
           <div class="row justify-content-around" formControlName="stage" id="stage" required>
 
@@ -85,15 +84,14 @@
           </div>
         </div>
       </div>
-      <hr class="my-5 col-8">
-      <!-- ----------buttons -->
-      <div class="text-center container">
-        <button type="submit" (click)="submitLecturerData()" class="btn btn-block btn-lg btn-success my-2" [disabled]="!lecturerForm.valid"><i
-            class="fas fa-plus"></i>
-          Add new lecturer</button>
-        <button type="button" class="col-2 btn btn-lg btn-secondary my-2" (click)="ResetForm()"><i class="fas fa-redo-alt"></i>
-          Reset</button>
-      </div>
+      <hr class="my-5 col-8"> -->
+    <!-- ----------buttons -->
+    <div class="text-center container">
+      <button type="submit" (click)="signUp()" class="btn btn-block btn-lg btn-success my-2"><i class="fas fa-plus"></i>
+        Add new lecturer</button>
+      <!-- <button type="button" class="col-2 btn btn-lg btn-secondary my-2" (click)="ResetForm()"><i class="fas fa-redo-alt"></i>
+          Reset</button> -->
     </div>
   </div>
-</form>
+</div>
+<!-- </form> -->
