@@ -4,24 +4,45 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
 @Component({
   selector: 'app-add-lecturer',
   templateUrl: './add-lecturer.component.html',
   styleUrls: ['./add-lecturer.component.css']
 })
 export class AddLecturerComponent implements OnInit {
-  private email: string;
-  private password: string;
+  email:string = '';
+  password:string = '';
+  itemList: AngularFireList<any>
 
-  constructor(private fire: AngularFireAuth, private router: Router, public toastr: ToastrService) { }
+  constructor(public db:AngularFireDatabase ,private fire:AngularFireAuth , private router: Router) { 
+    this.itemList = db.list('users')
+  }
 
   ngOnInit() {
   }
 
-  signUp() {
-    this.fire.auth.createUserWithEmailAndPassword(this.email, this.password).then(user => {
-      this.toastr.show(this.email + 'successfully added!');
-      this.router.navigate(['home']);
-    }).catch(error => { console.error(error) })
+  myRegister(){
+    this.fire.auth.createUserWithEmailAndPassword(this.email, this.password)
+    .then(user =>{
+      console.log(this.email, this.password)
+      localStorage.setItem('isLoggedIn','true')
+      localStorage.setItem('email',this.fire.auth.currentUser.email )
+
+      this.fire.authState.subscribe(auth=>{
+        if(auth){
+          localStorage.setItem('uid',auth.uid )
+  this.itemList.push({
+    email: this.email ,
+    uid : auth.uid
+  })
+  
+        }
+      })
+
+      this.router.navigate(['home'])
+    }).catch(error=>{
+      console.error(error)
+    })
   }
 }

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Student } from './student';  // Student data type interface class
-import { Lecturer } from './lecturer';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';  // Firebase modules for Database, Data list and Single object
 @Injectable({
   providedIn: 'root'
@@ -25,29 +24,14 @@ export class CrudService {
       stage: student.stage,
     })
   }
-  // Create Lec
-  AddLecturer(lecturer: Lecturer) {
-    this.lecturersRef.push({
-      title: lecturer.title,
-      name: lecturer.name,
-      department: lecturer.department,
-      stage: lecturer.stage,
-      email: lecturer.email,
-      password: lecturer.password,
-    })
-  }
-
+ 
   // Fetch Single Student Object
   GetStudent(id: string) {
     this.studentRef = this.db.object('students-list/' + id);
     return this.studentRef;
   }
 
-  // Fetch Single Lecrture Object
-  GetLecturer(id: string) {
-    this.lecturerRef = this.db.object('lecturers-list/' + id);
-    return this.lecturerRef;
-  }
+  
 
   // Fetch Students List
   GetStudentsList() {
@@ -55,11 +39,7 @@ export class CrudService {
     return this.studentsRef;
   }
 
-  // Fetch lecturers List
-  GetLecturersList() {
-    this.lecturersRef = this.db.list('lecturers-list');
-    return this.lecturersRef;
-  }
+
   //******************************************** */
 
   // Update Student Object
@@ -78,10 +58,5 @@ export class CrudService {
     this.studentRef.remove();
   }
 
-  // Delete Lecturer Object
-  DeleteLecturer(id: string) {
-    this.lecturerRef = this.db.object('lecturers-list/' + id);
-    this.lecturerRef.remove();
-  }
 
-}
+  }
