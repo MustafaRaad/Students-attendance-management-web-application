@@ -1,0 +1,10 @@
+.mySidebar.affix {
+    position: fixed;
+    top: 250px;  
+}
+
+.mySidebar.affix-bottom {
+    position: absolute;
+    top: auto;
+    bottom: 450px;  
+}   

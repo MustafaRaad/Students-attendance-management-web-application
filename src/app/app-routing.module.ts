@@ -13,12 +13,12 @@ import { HomeComponent } from "./home/home.component";
 import { attendanceComponent } from "./attendance/attendance.component";
 import { LoginComponent } from "./login/login.component";
 import { AdminComponent } from './admin/admin.component';
-import { AddStudentComponent } from './add-student/add-student.component';
-import { EditStudentComponent } from './edit-student/edit-student.component';
-import { StudentsListComponent } from './students-list/students-list.component';
-import { AddLecturerComponent } from "./add-lecturer/add-lecturer.component";
-import { EditLecturerComponent } from './edit-lecturer/edit-lecturer.component';
-import { LecturersListComponent } from './lecturers-list/lecturers-list.component';
+import { AddStudentComponent } from './admin/add-student/add-student.component';
+import { EditStudentComponent } from './admin/edit-student/edit-student.component';
+import { StudentsListComponent } from './admin/students-list/students-list.component';
+import { AddLecturerComponent } from "./admin/add-lecturer/add-lecturer.component";
+import { EditLecturerComponent } from './admin/edit-lecturer/edit-lecturer.component';
+import { LecturersListComponent } from './admin/lecturers-list/lecturers-list.component';
 
 
 const routes: Routes = [
