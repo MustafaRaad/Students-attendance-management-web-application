@@ -1,8 +1,8 @@
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Component, OnInit } from '@angular/core';
-import * as firebase from 'firebase/app'
+import { AuthService } from "../shared/services/auth.service";
+import { Component, OnInit, NgZone } from '@angular/core';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -10,54 +10,25 @@ import * as firebase from 'firebase/app'
 })
 export class NavbarComponent implements OnInit {
  
-  user: Observable<firebase.User>;
-  private isLoggedIn: Boolean= false;
-  private email: String;
+  public isLoggedIn = this.authService.isLoggedIn;
+  
+  constructor(public afAuth: AngularFireAuth, 
+    public router:Router, 
+    public authService: AuthService,
+    public ngZone: NgZone
+    ) { 
+      // console.log("Logged in ? "+this.authService.isLoggedIn)
 
-
-  constructor(public afAuth: AngularFireAuth, public router:Router) { 
-   
-
-    let status = localStorage.getItem('isLoggedIn')
-    console.log(status)
-
-    if (status === 'true') {
-      this.isLoggedIn = true;
-    }else{
-      this.isLoggedIn = false;
+      
+      
     }
-
-
-    // firebase.auth().onAuthStateChanged(function(user) {
-    //   if (user) {
-    //     // User is signed in.
-    //     this.isLoggedIn = true;
-    //   } else {
-    //     // No user is signed in.
-    //     this.isLoggedIn = false;
-        
-    //   }
-    // });
-
-
-  }
-
-  ngOnInit() {
- 
-
+    
+    
+    ngOnInit() {
+      
+      
+    }
+    
+  
     
   }
-
-  logout() {
-    this.afAuth.auth.signOut();
-    this.isLoggedIn = false
-    localStorage.setItem('isLoggedIn','false')
-  
-    localStorage.setItem('email', '' )
-    localStorage.setItem('uid','' )
-
-    this.router.navigate(['/login'])
-  }
-
-
-}

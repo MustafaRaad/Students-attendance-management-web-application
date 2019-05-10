@@ -4,6 +4,7 @@ export interface Student {
   lastName: string;
   department: string
   stage: string;
+  absence:number;
 }
 export class StudentInfo {
   $key: string;

@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
 // import custom validator to validate that password and confirm password fields match
 import { valid } from '../../shared/valid.validator';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-add-lecturer',
@@ -14,6 +16,8 @@ import { valid } from '../../shared/valid.validator';
   styleUrls: ['./add-lecturer.component.css']
 })
 export class AddLecturerComponent implements OnInit {
+  title:string;
+  displayName:string;
   email:string;
   password:string;
   itemList: AngularFireList<any>
@@ -21,17 +25,20 @@ export class AddLecturerComponent implements OnInit {
   submitted = false;
 
   constructor(public db:AngularFireDatabase ,
+    public authService: AuthService,
      private fire:AngularFireAuth ,
      private router: Router,
-     private formBuilder: FormBuilder,
+     private fb: FormBuilder,
+     private afs: AngularFirestore,
      )
-     { this.itemList = db.list('users')  }
+     { 
+       this.itemList = db.list('users') 
+     }
 
   ngOnInit() {
     
-    this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+    this.registerForm = this.fb.group({
+      // displayName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required]
@@ -57,7 +64,7 @@ onSubmit() {
   register(){
     this.fire.auth.createUserWithEmailAndPassword(this.email, this.password)
     .then(user =>{
-      console.log(this.email, this.password)
+      console.log(this.email,this.displayName,this.title, this.password)
       localStorage.setItem('isLoggedIn','true')
       localStorage.setItem('email',this.fire.auth.currentUser.email )
 
@@ -65,7 +72,10 @@ onSubmit() {
         if(auth){
           localStorage.setItem('uid',auth.uid )
   this.itemList.push({
+    // displayName: this.displayName ,
+    title: this.title ,
     email: this.email ,
+    password: this.password ,
     uid : auth.uid
   })
   

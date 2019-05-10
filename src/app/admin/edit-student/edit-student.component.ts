@@ -54,7 +54,9 @@ export class EditStudentComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: [''],
       department: [''],
-      stage: ['', [Validators.required, Validators.pattern('^[0-9]')]]
+      stage: ['', [Validators.required, Validators.pattern('^[0-9]')]],
+      absence: [''],
+
     })
   }
 

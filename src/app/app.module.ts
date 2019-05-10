@@ -29,6 +29,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 // Reactive Form Module
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from "./shared/services/auth.service";
 
 
 // -----------------components
@@ -36,7 +37,6 @@ import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { HomeComponent } from "./home/home.component";
 import { attendanceComponent } from "./attendance/attendance.component";
-import { LoginComponent } from "./login/login.component";
 import { AdminComponent } from './admin/admin.component';
 import { AddStudentComponent } from './admin/add-student/add-student.component';
 import { EditStudentComponent } from './admin/edit-student/edit-student.component';
@@ -44,6 +44,9 @@ import { StudentsListComponent } from './admin/students-list/students-list.compo
 import { AddLecturerComponent } from "./admin/add-lecturer/add-lecturer.component";
 import { EditLecturerComponent } from './admin/edit-lecturer/edit-lecturer.component';
 import { LecturersListComponent } from './admin/lecturers-list/lecturers-list.component';
+import { DashboardComponent } from './auth/dashboard/dashboard.component';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { VerifyEmailComponent } from './auth/verify-email/verify-email.component';
 import { AbsenceComponent } from './absence/absence.component';
 
 // ---------------
@@ -77,7 +80,6 @@ export function _firebaseAppFactory(options: FirebaseOptions, name?: string, app
     NavbarComponent,
     HomeComponent,
     attendanceComponent,
-    LoginComponent,
     AdminComponent,
     AddStudentComponent,
     EditStudentComponent,
@@ -85,7 +87,11 @@ export function _firebaseAppFactory(options: FirebaseOptions, name?: string, app
     AddLecturerComponent,
     EditLecturerComponent,
     LecturersListComponent,
-    AbsenceComponent
+    DashboardComponent,
+    SignInComponent,
+    VerifyEmailComponent,
+    AbsenceComponent,
+
   ],
   imports: [BrowserModule,
     AppRoutingModule,

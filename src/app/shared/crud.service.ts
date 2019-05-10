@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Student } from './student';  // Student data type interface class
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';  // Firebase modules for Database, Data list and Single object
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -8,8 +10,6 @@ import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angula
 export class CrudService {
   studentsRef: AngularFireList<any>;    // Reference to Student data list, its an Observable
   studentRef: AngularFireObject<any>;   // Reference to Student object, its an Observable too
-  lecturersRef: AngularFireList<any>;    // Reference to lecturer data list, its an Observable
-  lecturerRef: AngularFireObject<any>;   // Reference to lecturer object, its an Observable too
 
 
   // Inject AngularFireDatabase Dependency in Constructor
@@ -22,6 +22,7 @@ export class CrudService {
       lastName: student.lastName,
       department: student.department,
       stage: student.stage,
+      absence: student.absence,
     })
   }
  
@@ -48,7 +49,9 @@ export class CrudService {
       firstName: student.firstName,
       lastName: student.lastName,
       department: student.department,
-      stage: student.stage
+      stage: student.stage,
+      absence: student.absence,
+
     })
   }
   //******************************************** */

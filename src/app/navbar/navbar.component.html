@@ -5,34 +5,34 @@
         <a class="nav-link" [routerLink]="[ '/home' ]" routerLinkActive="active">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="[ '/attendance' ]" routerLinkActive="active">Attendance-table</a>
+        <a class="nav-link" [routerLink]="[ '/attendances' ]" routerLinkActive="active">Attendance-table</a>
       </li>
-      <li class="nav-item"  *ngIf="isLoggedIn">
-        <a class="nav-link" [routerLink]="[ '/attendance' ]" routerLinkActive="active">Absence-table</a>
+      <li class="nav-item"  *ngIf="authService.userData as user">
+        <a class="nav-link" [routerLink]="[ '/absences' ]" routerLinkActive="active">Absence-table</a>
       </li>
     </ul>
   </div>
   <div class="mx-auto order-0">
-    <a class="navbar-brand mx-auto" routerLink="/home">Universty of Information Technology and Communications</a>
+    <a class="navbar-brand mx-auto" routerLink="/home"><strong>Universty of Information Technology and Communications</strong></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
       <span class="navbar-toggler-icon"></span>
     </button>
   </div>
   <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item" *ngIf="isLoggedIn" >
-        <a class="nav-link" [routerLink]="[ '/admin' ]" routerLinkActive="active">Admin Panel</a>
+        <li class="nav-item" *ngIf="authService.userData as user" >
+            <a class="nav-link" [routerLink]="[ '/dashboard' ]" routerLinkActive="active">Mr. {{(user.displayName) ? user.displayName : 'User'}}</a>
+          </li>  
+           <li class="nav-item" *ngIf="authService.authEmail && authService.isLoggedIn" >
+              <a class="nav-link" [routerLink]="[ '/admin' ]" routerLinkActive="active">Admin Panel</a>
+            </li>
+      <li class="nav-item" *ngIf="!authService.userData as user" >
+        <a class="nav-link" [routerLink]="[ '/sign-in' ]" routerLinkActive="active">Log in <i class="fas fa-sign-in-alt"></i></a>
       </li>
-      <li class="nav-item" *ngIf="!isLoggedIn">
-        <a class="nav-link" [routerLink]="[ '/login' ]" routerLinkActive="active">Log in <i class="fas fa-sign-in-alt"></i></a>
+      <li class="nav-item" *ngIf="authService.userData as user">
+        <a class="nav-link" [routerLink]="[ '/' ]" (click)="authService.SignOut()">Log out <i class="fas fa-sign-out-alt"></i></a>
       </li>
-      <li class="nav-item" *ngIf="isLoggedIn">
-        <a class="nav-link" [routerLink]="[ '/' ]" (click)="logout()">Log out <i class="fas fa-sign-out-alt"></i></a>
-      </li>
-      <!-- <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form> -->
+    
     </ul>
   </div>
 </nav>

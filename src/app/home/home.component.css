@@ -1,6 +1,6 @@
 
 .logos{
-  margin: 3% 3% 3% 15%;
+  margin: 5%;
   width: 200px;
   height: 200px;
 }
@@ -8,4 +8,15 @@
 .jumbotron{
   background-color:#dfdfdf;
   margin-bottom: -1%;
+}
+.right
+{
+  float:right
+}
+.left{
+  float:left;
+}
+.content{
+  float: center;
+  margin-top: -8em;
 }

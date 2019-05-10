@@ -16,7 +16,16 @@ export class attendanceComponent implements OnInit {
   noData: boolean = false;            // Showing No Student Message, when no student in database.
   preLoader: boolean = true;          // Showing Preloader to show user data is coming for you from thre server(A tiny UX Shit)
   StudentSelect: StudentInfo;
+// -------------
 
+random = Math.floor(Math.random() * 100);
+random2 = Math.floor(Math.random() * 100);
+random3 = Math.floor(Math.random() * 100);
+random4 = Math.floor(Math.random() * 100);
+random5 = Math.floor(Math.random() * 100);
+random6 = Math.floor(Math.random() * 100);
+random7 = Math.floor(Math.random() * 100);
+// ------------------
   constructor(
     public crudApi: CrudService, // Inject student CRUD services in constructor.
     public toastr: ToastrService // Toastr service for alert message
@@ -52,4 +61,6 @@ export class attendanceComponent implements OnInit {
   onselect(studentObj: StudentInfo): void {
     this.StudentSelect = studentObj
   }
+
+
 }

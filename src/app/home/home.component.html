@@ -1,26 +1,27 @@
 <div class="container-fluid jumbotron">
   <!-- ----------------------logos -->
   <div class="row justify-content-between">
-
-    <div class="col-2 ">
-      <img class="img logos" src="../assets/imgs/2.png" alt="UITC Logo" />
+    
+    <div class="col-2 left">
+      <img class="img logos" src="../../assets/imgs/2.png" alt="UITC Logo" />
     </div>
-
-    <div class="col-2 ">
-      <img class="img logos bic" src="../assets/imgs/1.png" alt="BIC Logo" />
+    
+    <div class="col-2 right">
+      <img class="img logos bic" src="../../assets/imgs/1.png" alt="BIC Logo" />
     </div>
-
+    
   </div>
   <!-- -------------------------welcoming   -->
-  <div class="">
+        <div class="content">
     <h1 class="display-2 text-center">Welcome to</h1>
     <hr class="col-4 my-5">
     <p class="bold display-4 text-center">Universty of Information Technology and Communications</p>
     <p class="lead text-center">Student attendance of Business Informatics College</p>
     <hr class="my-5">
     <div class="center text-center row justify-content-around ">
-      <a class="btn btn-primary btn-lg col-4" [routerLink]="[ '/dep' ]" role="button">Show Attendance table of Students</a>
-      <a class="btn btn-info btn-lg col-4" [routerLink]="[ '/login' ]" role="button">Log in</a>
+      <a class="btn btn-primary btn-lg col-4" [routerLink]="[ '/attendances' ]" role="button">Show Attendance table of Students</a>
+      <a class="btn btn-info btn-lg col-4"  *ngIf="authService.isLoggedIn" [routerLink]="[ '/absences' ]" role="button">Edit an absences</a>
+      <a class="btn btn-info btn-lg col-4" *ngIf="!authService.isLoggedIn" [routerLink]="[ '/sign-in' ]" role="button">Log in</a>
     </div>
   </div>
 </div>

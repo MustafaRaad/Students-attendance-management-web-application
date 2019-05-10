@@ -1,3 +1,81 @@
-<p>
-  absence works!
-</p>
+<!-- choises of shown data -->
+<div class="container col-12">
+    <div class="row justify-content-center">
+      <p class="h2 text-center primary">Attendance Percentage</p>
+    </div>
+    <div class="row justify-content-center head">
+      <div class="input-group input-group-lg col-5">
+        <div class="input-group-prepend ">
+          <label class="input-group-text" formControlName="department" for="department">Department to show</label>
+        </div>
+        <select class="custom-select" id="department">
+          <option selected value="BIT">BIT (Business Informatics Technology)</option>
+          <option value="ISM">ISM (Information Systems Management)</option>
+        </select>
+      </div>
+      <!-- ----------- -->
+      <div class="input-group input-group-lg col-1">
+        <select class="custom-select" id="">
+          <option selected value="1">Course 1</option>
+          <option value="2">Course 2</option>
+        </select>
+      </div>
+      <!-- ------------ -->
+      <div class="input-group input-group-lg col-3">
+        <select class="custom-select" id="stage">
+          <option selected value="1">Stage 1</option>
+          <option value="2">Stage 2</option>
+          <option value="3">Stage 3</option>
+          <option value="4">Stage 4</option>
+        </select>
+        <div class="input-group-append">
+          <label class="input-group-text" for="stage">Satge to show</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="my-4 col-8">
+  <!-- -------------------------------------- -->
+  <!-- No data shows when their is no student data available -->
+  <div class="pricing-header row justify-content-center">
+    <div class="no-data text-center" *ngIf="noData">
+      <p class="nodata-msg">No student added yet!</p>
+    </div>
+  
+    <!-- Showing students data -->
+    <div class="table-responsive col-11" *ngIf="hideWhenNoStudent">
+      <table class="table table-bordered table-light table-hover table-responsive-sm table-responsive-md table-responsive-lg">
+        <thead>
+          <tr>
+            <th scope="col">Student name</th>
+            <th scope="col">E-Commerce M.</th>
+            <th scope="col">Management Processes</th>
+            <th scope="col">Mobile Computing</th>
+            <th scope="col">Social</th>
+            <th scope="col">Linear algebra</th>
+            <th scope="col">ERP</th>
+            <th scope="col">Adv. PM</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- *ngFor loop iterates over Student array and fetch the student's data -->
+          <!-- paginate pipe will add pagination in student's list, it won't show if items are less then 11 -->
+          <tr *ngFor="let student of Student| paginate: { itemsPerPage: 10, currentPage: p }; let i = index;">
+            <td><i class="far fa-edit" routerLink="/edit-student/{{student.$key}}"></i>
+            {{student.firstName}} {{student.lastName}}</td>
+            <td>25%
+            </td>
+            <td>75%</td>
+            <td>clean</td>
+            <td>25%</td>
+            <td>50%</td>
+            <td>clean</td>
+            <td>clean</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- Pagination -->
+    <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
+  </div>
+  

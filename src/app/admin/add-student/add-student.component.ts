@@ -31,7 +31,8 @@ export class AddStudentComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: [''],
       department: [''],
-      stage: ['', [Validators.required, Validators.pattern('^[1-6]')]]
+      stage: ['', [Validators.required, Validators.pattern('^[1-6]')]],
+      absence: [''],
     })
   }
 
@@ -50,6 +51,9 @@ export class AddStudentComponent implements OnInit {
 
   get stage() {
     return this.studentForm.get('stage');
+  }
+  get absence() {
+    return this.studentForm.get('absence');
   }
 
   // Reset student form's values

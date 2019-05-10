@@ -4,7 +4,7 @@
     <p class="h2 text-center primary">Attendance Percentage</p>
   </div>
   <div class="row justify-content-center head">
-    <div class="input-group input-group-lg col-5">
+    <div class="input-group input-group-lg col-6">
       <div class="input-group-prepend ">
         <label class="input-group-text" formControlName="department" for="department">Department to show</label>
       </div>
@@ -14,7 +14,7 @@
       </select>
     </div>
     <!-- ----------- -->
-    <div class="input-group input-group-lg col-1">
+    <div class="input-group input-group-lg col-2">
       <select class="custom-select" id="">
         <option selected value="1">Course 1</option>
         <option value="2">Course 2</option>
@@ -62,16 +62,17 @@
         <!-- paginate pipe will add pagination in student's list, it won't show if items are less then 11 -->
         <tr *ngFor="let student of Student| paginate: { itemsPerPage: 10, currentPage: p }; let i = index;">
           <td>{{student.firstName}} {{student.lastName}}</td>
-          <td>25%
-          </td>
-          <td>75%</td>
-          <td>clean</td>
-          <td>25%</td>
-          <td>50%</td>
-          <td>clean</td>
-          <td>clean</td>
+          <td>{{random}}%</td>
+          <td>{{random2}}%</td>
+          <td>{{random3}}%</td>
+          <td>{{random4}}%</td>
+          <td>{{random5}}%</td>
+          <td>{{random6}}%</td>
+          <td>{{random7}}%</td>
         </tr>
+        
       </tbody>
+      
     </table>
   </div>
   <!-- Pagination -->
