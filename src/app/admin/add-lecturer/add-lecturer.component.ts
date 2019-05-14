@@ -16,7 +16,6 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./add-lecturer.component.css']
 })
 export class AddLecturerComponent implements OnInit {
-  title:string;
   displayName:string;
   email:string;
   password:string;
@@ -38,7 +37,7 @@ export class AddLecturerComponent implements OnInit {
   ngOnInit() {
     
     this.registerForm = this.fb.group({
-      // displayName: ['', Validators.required],
+      displayName: [''],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required]
@@ -64,7 +63,7 @@ onSubmit() {
   register(){
     this.fire.auth.createUserWithEmailAndPassword(this.email, this.password)
     .then(user =>{
-      console.log(this.email,this.displayName,this.title, this.password)
+      console.log(this.email,this.displayName, this.password)
       localStorage.setItem('isLoggedIn','true')
       localStorage.setItem('email',this.fire.auth.currentUser.email )
 
@@ -72,11 +71,10 @@ onSubmit() {
         if(auth){
           localStorage.setItem('uid',auth.uid )
   this.itemList.push({
-    // displayName: this.displayName ,
-    title: this.title ,
+    displayName: this.displayName ,
     email: this.email ,
     password: this.password ,
-    uid : auth.uid
+    uid : auth.uid,
   })
   
         }

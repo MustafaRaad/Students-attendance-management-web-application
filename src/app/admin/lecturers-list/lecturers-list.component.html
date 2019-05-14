@@ -1,3 +1,54 @@
-<p>
-  lecturers-list works!
-</p>
+<div class="container">
+ 
+<p class="display-4">{{title}}</p>
+  <!-- <div class="row" style="margin-top: 25px;">
+    <div class="col-md-3">
+      <input type="text" class="form-control" [(ngModel)]="lecturerName" placeholder="displayName">
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" [(ngModel)]="lecturerEmail" placeholder="Email">
+    </div>
+    <div class="col-md-3">
+      <button type="button" (click)="CreateRecord()" [disabled]="!lecturerName || !lecturerEmail || !lecturerEmailVerified" class="btn btn-primary">+
+        Create Student</button>
+    </div>
+  </div> -->
+  <div class="row" style="margin-top: 25px;">
+    <div class="col-md-3">
+      <div class="card" style="width: 18rem;" *ngFor="let item of lecturers">
+        <div class="card-body" *ngIf="!item.isEdit; else elseBlock">
+          <h5 class="card-title">{{item.displayName}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">email: {{item.email}}</h6>
+          <p class="card-text">emailVerified: {{item.emailVerified}}</p>
+          <p class="card-text ">uid: {{item.uid}}</p>
+          
+          <a class="card-link btn btn-primary" (click)="EditRecord(item)">Edit</a>
+          <a  class="card-link btn btn-danger" (click)="RemoveRecord(item.id)">Delete</a>
+        </div>
+        <ng-template #elseBlock>
+          <div class="card-body">
+            <h5 class="card-title">Edit</h5>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-12">
+                  <input type="text" class="form-control" [(ngModel)]="item.EditName" placeholder="Edit displayName">
+                </div>
+                <div class="col-md-12">
+                  <input type="text" class="form-control" [(ngModel)]="item.Editemail" placeholder="Edit email">
+                </div>
+                <div class="col-md-12">
+                  <input type="text" class="form-control" [(ngModel)]="item.EditAddress" placeholder="Edit emailVerified" disabled>
+                </div>
+              </div>
+            </div>
+ 
+            <a class="card-link btn btn-danger" (click)="item.isEdit = false">Cancel</a>
+            <a class="card-link btn btn-info" (click)="UpdateRecord(item)">Update</a>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+ 
+ 
+</div>

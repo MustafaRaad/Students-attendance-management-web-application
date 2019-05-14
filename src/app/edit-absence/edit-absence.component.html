@@ -1,0 +1,103 @@
+<div
+  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom container">
+  <h1 class="h2">Edit Student Details</h1>
+  <div class="btn-toolbar mb-3 mb-md-0">
+    <div class="btn-group">
+      <!-- goBack() me+cthos to back to previous component -->
+      <button class="btn btn-sm btn-outline-secondary" (click)="goBack()">Go Back</button>
+    </div>
+  </div>
+</div>
+<div class="container jumbotron">
+
+  <div class="row">
+    <div class="col-12">
+      <div class="pricing-header form-block mx-auto">
+        <!-- ------------ Student's Edit Form -->
+        <form [formGroup]="editForm" (ngSubmit)="updateForm()" novalidate>
+          <div class="row">
+            <div class="col-md-12 mb-3">
+              <!-- ----------------- names -->
+              <div class="input-group row">
+                <div class="col-md-2 mb-2">
+                  <input type="text" formControlName="firstName" class="form-control" aria-describedby="basic-addon1"
+                    disabled>
+                </div>
+                <div class="col-md-2 mb-2">
+                  <input type="text" formControlName="department" class="form-control" aria-describedby="basic-addon1"
+                    disabled>
+                </div>
+                <div class="col-md-2 mb-2">
+                  <input type="text" formControlName="stage" class="form-control" aria-describedby="basic-addon1"
+                    disabled>
+                </div>
+              </div>
+              <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+
+                  <div class="input-group row">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">Lecture 1</span>
+                    </div>
+                    <input type="number" formControlName="lect1" class="form-control" aria-describedby="basic-addon1" min="0" max="14">
+                  </div>
+
+                  <div class="input-group row">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon2">Lecture 2</span>
+                    </div>
+                    <input type="number" formControlName="lect2" class="form-control" aria-describedby="basic-addon2" min="0" max="14">
+                  </div>
+
+                  <div class="input-group row">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon3">Lecture 3</span>
+                    </div>
+                    <input type="number" formControlName="lect3" class="form-control" aria-describedby="basic-addon3" min="0" max="14">
+                  </div>
+
+                  <div class="input-group row">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon14">Lecture 4</span>
+                    </div>
+                    <input type="number" formControlName="lect4" class="form-control" aria-describedby="basic-addon4" min="0" max="14">
+                  </div>
+
+                  <div class="input-group row">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon5">Lecture 5</span>
+                    </div>
+                    <input type="number" formControlName="lect5" class="form-control" aria-describedby="basic-addon5" min="0" max="14">
+                  </div>
+
+                  <div class="input-group row">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon6">Lecture 6</span>
+                    </div>
+                    <input type="number" formControlName="lect6" class="form-control" aria-describedby="basic-addon6" min="0" max="14">
+                  </div>
+
+                  <div class="input-group row">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon7">Lecture 7</span>
+                    </div>
+                    <input type="number" formControlName="lect7" class="form-control" aria-describedby="basic-addon7" min="0" max="14">
+                  </div>
+
+                </div>
+              </div>
+              <!-- --------------buttons -->
+              <div class="form-group text-center container">
+                <button type="submit" (click)="updateForm()" class="btn btn-lg btn-success btn-block"
+                  [disabled]="!editForm.valid">Update
+                  Student</button>
+              </div>
+
+            </div>
+          </div>
+        </form><!-- Student's Edit Form ends-->
+
+      </div>
+    </div>
+  </div>
+</div>

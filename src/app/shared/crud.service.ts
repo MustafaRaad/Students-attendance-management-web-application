@@ -13,7 +13,9 @@ export class CrudService {
 
 
   // Inject AngularFireDatabase Dependency in Constructor
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase
+    ,private firestore: AngularFirestore
+    ) { }
 
   // Create Student
   AddStudent(student: Student) {
@@ -22,7 +24,13 @@ export class CrudService {
       lastName: student.lastName,
       department: student.department,
       stage: student.stage,
-      absence: student.absence,
+      lect1:student.lect1,
+      lect2:student.lect2,
+      lect3:student.lect3,
+      lect4:student.lect4,
+      lect5:student.lect5,
+      lect6:student.lect6,
+      lect7:student.lect7,
     })
   }
  
@@ -50,8 +58,13 @@ export class CrudService {
       lastName: student.lastName,
       department: student.department,
       stage: student.stage,
-      absence: student.absence,
-
+      lect1:student.lect1,
+      lect2:student.lect2,
+      lect3:student.lect3,
+      lect4:student.lect4,
+      lect5:student.lect5,
+      lect6:student.lect6,
+      lect7:student.lect7
     })
   }
   //******************************************** */
@@ -61,5 +74,19 @@ export class CrudService {
     this.studentRef.remove();
   }
 
-
+  // create_NewLecturer(record) {
+  //   return this.firestore.collection('users').add(record);
+  // }
+ 
+  read_Lecturers() {
+    return this.firestore.collection('users').snapshotChanges();
+  }
+ 
+  update_Lecturer(recordID,record){
+    this.firestore.doc('users/' + recordID).update(record);
+  }
+ 
+  delete_Lecturer(record_id) {
+    this.firestore.doc('users/' + record_id).delete();
+  }
   }

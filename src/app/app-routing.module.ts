@@ -18,6 +18,7 @@ import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { DashboardComponent } from './auth/dashboard/dashboard.component';
 import { VerifyEmailComponent } from './auth/verify-email/verify-email.component';
 import { AbsenceComponent } from './absence/absence.component';
+import { EditAbsenceComponent } from './edit-absence/edit-absence.component';
 
 // Import canActivate guard services
 import { SecureInnerPagesGuard } from './shared/guard/secure-inner-pages.guard';
@@ -37,7 +38,9 @@ const routes: Routes = [
   { path: 'sign-in', component: SignInComponent, canActivate: [SecureInnerPagesGuard]},
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'verify-email-address', component: VerifyEmailComponent },
-  { path: 'absences', component: AbsenceComponent, canActivate: [AuthGuard]}
+  { path: 'absences', component: AbsenceComponent, canActivate: [AuthGuard]},
+  { path: 'edit-absence/:id', component: EditAbsenceComponent, canActivate: [AuthGuard]}
+
 ];
 // Import RouterModule and inject routes array in it and dont forget to export the RouterModule
 

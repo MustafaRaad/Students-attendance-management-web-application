@@ -48,6 +48,7 @@ import { DashboardComponent } from './auth/dashboard/dashboard.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { VerifyEmailComponent } from './auth/verify-email/verify-email.component';
 import { AbsenceComponent } from './absence/absence.component';
+import { EditAbsenceComponent } from './edit-absence/edit-absence.component';
 
 // ---------------
 
@@ -91,6 +92,7 @@ export function _firebaseAppFactory(options: FirebaseOptions, name?: string, app
     SignInComponent,
     VerifyEmailComponent,
     AbsenceComponent,
+    EditAbsenceComponent,
 
   ],
   imports: [BrowserModule,

@@ -1,17 +1,16 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CrudService } from '../../shared/crud.service';
+import { CrudService } from '../shared/crud.service';
 import { ActivatedRoute, Router } from "@angular/router"; // ActivatedRoue is used to get the current associated components information.
 import { Location } from '@angular/common';  // Location service is used to go back to previous component
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-edit-student',
-  templateUrl: './edit-student.component.html',
-  styleUrls: ['./edit-student.component.css']
+  selector: 'app-edit-absence',
+  templateUrl: './edit-absence.component.html',
+  styleUrls: ['./edit-absence.component.css']
 })
-
-export class EditStudentComponent implements OnInit {
+export class EditAbsenceComponent implements OnInit {
   editForm: FormGroup;  // Define FormGroup to student's edit form
 
   constructor(
@@ -97,7 +96,7 @@ export class EditStudentComponent implements OnInit {
   updateForm() {
     this.crudApi.UpdateStudent(this.editForm.value);       // Update student data using CRUD API
     this.toastr.success(this.editForm.controls['firstName'].value + ' updated successfully');   // Show succes message when data is successfully submited
-    this.router.navigate(['admin']);               // Navigate to student's list page when student data is updated
+    this.router.navigate(['absences']);               // Navigate to student's list page when student data is updated
   }
 
 }
