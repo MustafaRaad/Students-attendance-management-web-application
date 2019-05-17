@@ -18,6 +18,7 @@
       <div class="card" style="width: 18rem;" *ngFor="let item of lecturers">
         <div class="card-body" *ngIf="!item.isEdit; else elseBlock">
           <h5 class="card-title">{{item.displayName}}</h5>
+          <h5 class="card-title">{{item.department}}</h5>
           <h6 class="card-subtitle mb-2 text-muted">email: {{item.email}}</h6>
           <p class="card-text">emailVerified: {{item.emailVerified}}</p>
           <p class="card-text ">uid: {{item.uid}}</p>
@@ -37,7 +38,7 @@
                   <input type="text" class="form-control" [(ngModel)]="item.Editemail" placeholder="Edit email">
                 </div>
                 <div class="col-md-12">
-                  <input type="text" class="form-control" [(ngModel)]="item.EditAddress" placeholder="Edit emailVerified" disabled>
+                  <input type="text" class="form-control" [(ngModel)]="item.EditDepartment" placeholder="Edit Department" >
                 </div>
               </div>
             </div>

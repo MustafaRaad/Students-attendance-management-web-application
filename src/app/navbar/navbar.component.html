@@ -21,7 +21,7 @@
   <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
     <ul class="navbar-nav ml-auto">
         <li class="nav-item" *ngIf="authService.userData as user" >
-            <a class="nav-link" [routerLink]="[ '/dashboard' ]" routerLinkActive="active">Mr. {{(lecturerName) ? lecturerName : 'User'}}</a>
+            <a class="nav-link" [routerLink]="[ '/dashboard' ]" routerLinkActive="active">Mr. {{(user.displayName) ? user.displayName : 'User'}}</a>
           </li>  
            <li class="nav-item" *ngIf="authService.authEmail && authService.isLoggedIn" >
               <a class="nav-link" [routerLink]="[ '/admin' ]" routerLinkActive="active">Admin Panel</a>

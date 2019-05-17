@@ -13,7 +13,8 @@ export class DashboardComponent implements OnInit {
     constructor(
         public authService: AuthService,
         public router: Router,
-        public ngZone: NgZone
+        public ngZone: NgZone,
+        public auth: AuthService
     ) {
         // console.log('ofy'+this.afAuth.auth.currentUser);
         

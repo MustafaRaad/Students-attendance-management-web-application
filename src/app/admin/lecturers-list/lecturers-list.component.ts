@@ -12,6 +12,7 @@ export class LecturersListComponent implements OnInit {
  
   lecturers: any;
   lecturerName: string;
+  lecturerDepartment:string;
   lecturerEmail: string;
   lecturerEmailVerified: string;
   lecturerUid:string;
@@ -26,6 +27,7 @@ export class LecturersListComponent implements OnInit {
           id: e.payload.doc.id,
           isEdit: false,
           displayName: e.payload.doc.data()['displayName'],
+          department:e.payload.doc.data()['department'],
           email: e.payload.doc.data()['email'],
           emailVerified: e.payload.doc.data()['emailVerified'],
           uid:e.payload.doc.data()['uid']
@@ -59,6 +61,7 @@ export class LecturersListComponent implements OnInit {
   EditRecord(record) {
     record.isEdit = true;
     record.EditName = record.displayName;
+    record.EditDepartment = record.department;
     record.Editemail = record.email;
     record.EditAddress = record.emailVerified;
   }
@@ -66,6 +69,7 @@ export class LecturersListComponent implements OnInit {
   UpdateRecord(recordRow) {
     let record = {};
     record['displayName'] = recordRow.EditName;
+    record['department'] = recordRow.EditDepartment;
     record['email'] = recordRow.Editemail;
     record['emailVerified'] = recordRow.EditAddress;
     this.crudService.update_Lecturer(recordRow.id, record);

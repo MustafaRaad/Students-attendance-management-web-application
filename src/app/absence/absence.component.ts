@@ -5,7 +5,8 @@ import { CrudService } from '../shared/crud.service';
 import { ActivatedRoute, Router } from "@angular/router"; // ActivatedRoue is used to get the current associated components information.
 import { Location } from '@angular/common';  // Location service is used to go back to previous component
 import { ToastrService } from 'ngx-toastr';
-
+import * as jspdf from 'jspdf';  
+import html2canvas from 'html2canvas';  
 @Component({
   selector: 'app-absence',
   templateUrl: './absence.component.html',
@@ -114,6 +115,22 @@ export class AbsenceComponent implements OnInit {
     this.toastr.success(this.editForm.controls['firstName'].value + ' updated successfully');   // Show succes message when data is successfully submited
     this.router.navigate(['/']);               // Navigate to student's list page when student data is updated
   }
-
+  public captureScreen()  
+  {  
+    var data = document.getElementById('contentToConvert');  
+    html2canvas(data).then(canvas => {  
+      // Few necessary setting options  
+      var imgWidth = 208;   
+      var pageHeight = 295;    
+      var imgHeight = canvas.height * imgWidth / canvas.width;  
+      var heightLeft = imgHeight;  
+  
+      const contentDataURL = canvas.toDataURL('image/png')  
+      let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
+      var position = 0;  
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
+      pdf.save('Attendance-list.pdf'); // Generated PDF   
+    });  
+  }  
 
 }

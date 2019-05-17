@@ -1,8 +1,10 @@
 import { StudentInfo } from './../shared/student';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CrudService } from '../shared/crud.service';  // CRUD API service class
 import { Student } from '../shared/student';   // Student interface class for Data types.
 import { ToastrService } from 'ngx-toastr';      // Alert message using NGX toastr
+import * as jspdf from 'jspdf';  
+import html2canvas from 'html2canvas';  
 
 @Component({
   selector: 'app-attendance',
@@ -16,16 +18,7 @@ export class attendanceComponent implements OnInit {
   noData: boolean = false;            // Showing No Student Message, when no student in database.
   preLoader: boolean = true;          // Showing Preloader to show user data is coming for you from thre server(A tiny UX Shit)
   StudentSelect: StudentInfo;
-// -------------
 
-random = Math.floor(Math.random() * 100);
-random2 = Math.floor(Math.random() * 100);
-random3 = Math.floor(Math.random() * 100);
-random4 = Math.floor(Math.random() * 100);
-random5 = Math.floor(Math.random() * 100);
-random6 = Math.floor(Math.random() * 100);
-random7 = Math.floor(Math.random() * 100);
-// ------------------
   constructor(
     public crudApi: CrudService, // Inject student CRUD services in constructor.
     public toastr: ToastrService // Toastr service for alert message
@@ -61,6 +54,21 @@ random7 = Math.floor(Math.random() * 100);
   onselect(studentObj: StudentInfo): void {
     this.StudentSelect = studentObj
   }
-
-
+  public captureScreen()  
+  {  
+    var data = document.getElementById('contentToConvert');  
+    html2canvas(data).then(canvas => {  
+      // Few necessary setting options  
+      var imgWidth = 208;   
+      var pageHeight = 295;    
+      var imgHeight = canvas.height * imgWidth / canvas.width;  
+      var heightLeft = imgHeight;  
+  
+      const contentDataURL = canvas.toDataURL('image/png')  
+      let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
+      var position = 0;  
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
+      pdf.save('Attendance-list.pdf'); // Generated PDF   
+    });  
+  }  
 }

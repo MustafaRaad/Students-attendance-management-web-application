@@ -4,7 +4,8 @@ import { auth } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
-
+import { Observable, of } from 'rxjs';
+import { switchMap} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +13,8 @@ import { Router } from "@angular/router";
 export class AuthService {
   userData: any; // Save logged in user data
   authEmail:boolean;
-  
+  user: Observable<User>;
+
   constructor(
     public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
@@ -39,8 +41,19 @@ export class AuthService {
         JSON.parse(localStorage.getItem('user'));
       }
     })
+// ------------
+//// Get auth data, then get firestore user document || null
+this.user = this.afAuth.authState.pipe(
+  switchMap(user => {
+    if (user) {
+      return this.afs.doc<User>(`users/${user.uid}`).valueChanges()
+    } else {
+      return of(null)
+    }
+  })
+)
+}
 
-  }
 
   // Sign in with email/password
   SignIn(email, password) {
@@ -121,6 +134,7 @@ export class AuthService {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
+      department:user.department,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified
     }
@@ -129,23 +143,25 @@ export class AuthService {
     })
   }
 
-//   update(user) {
-//     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-//     user.updateProfile({
-//       email: user.email,
-//       displayName: user.displayName,
-//       photoURL: user.photoURL,
-//     }).then(function () {
-//       console.log('success')
-//       // Update successful.
-//     }).catch(function (error) {
-//       // An error happened.
-//     });
-//  return userRef.set(userData, {
-//       merge: true
-//     })
+  
 
-//   }
+  update(user) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    user.updateProfile({
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+    }).then(function () {
+      console.log('success')
+      // Update successful.
+    }).catch(function (error) {
+      // An error happened.
+    });
+ return userRef.set(this.userData, {
+      merge: true
+    })
+
+  }
 
   // Sign out 
   SignOut() {

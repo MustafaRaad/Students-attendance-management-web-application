@@ -19,6 +19,7 @@ export class AddLecturerComponent implements OnInit {
   displayName:string;
   email:string;
   password:string;
+  department:string;
   itemList: AngularFireList<any>
   registerForm: FormGroup;
   submitted = false;
@@ -38,6 +39,7 @@ export class AddLecturerComponent implements OnInit {
     
     this.registerForm = this.fb.group({
       displayName: [''],
+      department:[''],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required]
@@ -72,6 +74,7 @@ onSubmit() {
           localStorage.setItem('uid',auth.uid )
   this.itemList.push({
     displayName: this.displayName ,
+    department:this.department,
     email: this.email ,
     password: this.password ,
     uid : auth.uid,

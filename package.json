@@ -27,6 +27,8 @@
     "braces": "^2.3.2",
     "core-js": "^2.6.5",
     "firebase": "^5.8.5",
+    "html2canvas": "^1.0.0-rc.1",
+    "jspdf": "^1.5.3",
     "ngrx": "^2.0.1",
     "ngx-pagination": "^3.2.1",
     "ngx-toastr": "^9.1.2",

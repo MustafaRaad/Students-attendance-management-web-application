@@ -1,17 +1,22 @@
 <!-- choises of shown data -->
-<div class="jumbotron jumbotron-fluid">
-  <div class="container ">
-
+<div class="jumbotron jumbotron-fluid" id="content" #content>
+  <div class="container col-12 ">
+      <div class="row justify-content-center">
+          <p class="display-4 text-center primary">Absences checking</p>
+        </div>
+    <div class="row justify-content-start">
+        <h4 class="col-md-1" value="CPTURE" (click)="captureScreen()"><i class="fas fa-print"></i></h4>
+  </div>
     <!-- -------------------------------------- -->
     <!-- No data shows when their is no student data available -->
     <div class="pricing-header row justify-content-center">
       <div class="no-data text-center" *ngIf="noData">
         <p class="nodata-msg">No student added yet!</p>
       </div>
-      <form [formGroup]="editForm" (ngSubmit)="updateForm()" novalidate>
+      <form class="col-12 justify-content-center" [formGroup]="editForm" (ngSubmit)="updateForm()" novalidate>
         <!-- Showing students data -->
         <div class="table-responsive" *ngIf="hideWhenNoStudent">
-          <table
+          <table id="contentToConvert"
             class="table table-bordered table-light table-hover table-responsive-sm table-responsive-md table-responsive-lg">
             <thead>
               <tr>
@@ -44,10 +49,6 @@
         </div>
         <!-- Pagination -->
         <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
-        <div class="form-group text-center container">
-          <button type="submit" (click)="updateForm()" class="btn btn-lg btn-success btn-block">Update
-            Student</button>
-        </div>
       </form>
     </div>
   </div>

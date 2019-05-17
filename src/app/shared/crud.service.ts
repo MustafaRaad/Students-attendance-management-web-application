@@ -74,9 +74,9 @@ export class CrudService {
     this.studentRef.remove();
   }
 
-  // create_NewLecturer(record) {
-  //   return this.firestore.collection('users').add(record);
-  // }
+  create_NewLecturer(record) {
+    return this.firestore.collection('users').add(record);
+  }
  
   read_Lecturers() {
     return this.firestore.collection('users').snapshotChanges();

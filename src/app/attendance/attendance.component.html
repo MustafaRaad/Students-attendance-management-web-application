@@ -1,29 +1,37 @@
 <!-- choises of shown data -->
-<div class="container col-12">
+<div id="content" #content>
+
+  <div class="container col-12">
+
   <div class="row justify-content-center">
-    <p class="h2 text-center primary">Attendances of Student</p>
-  </div>
-</div>
-<hr class="my-4 col-8">
-<!-- -------------------------------------- -->
-<!-- No data shows when their is no student data available -->
-<div class="pricing-header row justify-content-center">
-  <div class="no-data text-center" *ngIf="noData">
-    <p class="nodata-msg">No student added yet!</p>
+      <p class="h2 text-center primary">Attendances of Student</p>
+    </div>
+
   </div>
 
-  <!-- Showing students data -->
-  <div class="table-responsive col-11" *ngIf="hideWhenNoStudent">
-    <table class="table table-bordered table-light table-hover table-responsive-sm table-responsive-md table-responsive-lg">
-      <thead>
-        <tr>
-          <th scope="col">Student name</th>
-          <th scope="col">E-Commerce M.</th>
-          <th scope="col">Management Processes</th>
-          <th scope="col">Mobile Computing</th>
-          <th scope="col">Social</th>
-          <th scope="col">Linear algebra</th>
-          <th scope="col">ERP</th>
+  <hr class="my-4 col-8">
+  <!-- -------------------------------------- -->
+  <!-- No data shows when their is no student data available -->
+  <div class="pricing-header row justify-content-center">
+    <div class="no-data text-center" *ngIf="noData">
+      <p class="nodata-msg">No student added yet!</p>
+    </div>
+    
+    <!-- Showing students data -->
+    <div class="table-responsive col-11" *ngIf="hideWhenNoStudent" >
+        <div class="row">
+            <h4  value="CPTURE" (click)="captureScreen()"><i class="fas fa-print"></i></h4>
+      </div>
+      <table id="contentToConvert" class="table table-bordered table-light table-hover table-responsive-sm table-responsive-md table-responsive-lg">
+        <thead>
+          <tr>
+            <th scope="col">Student name</th>
+            <th scope="col">E-Commerce M.</th>
+            <th scope="col">Management Processes</th>
+            <th scope="col">Mobile Computing</th>
+            <th scope="col">Social</th>
+            <th scope="col">Linear algebra</th>
+            <th scope="col">ERP</th>
           <th scope="col">Adv. PM</th>
         </tr>
       </thead>
@@ -47,4 +55,5 @@
   </div>
   <!-- Pagination -->
   <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
+</div>
 </div>
