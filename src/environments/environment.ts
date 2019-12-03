@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyAMqpxpBbbvt9MgNj6qifvND15izxMV6-E",
-    authDomain: "attendance-uitc.firebaseapp.com",
+    apiKey: "",
+    authDomain: "",
     databaseURL: "https://attendance-uitc.firebaseio.com",
     projectId: "attendance-uitc",
     storageBucket: "attendance-uitc.appspot.com",
-    messagingSenderId: "572105417755"
+    messagingSenderId: ""
   }
 };
 
