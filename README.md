@@ -2,7 +2,7 @@
 Graduting project of final year project 
 for Unvirsty of Inforemations Technology and Communications => uoitc.edu.iq
 Idea: Gaith Kamil & Minatallah
-All rights recieved for Mustafa Raad Mutashar => ofydesigner.2008@gmail.com 
+All rights reserved for Mustafa Raad Mutashar => ofydesigner.2008@gmail.com 
 -----------
 ##Angular freamwork
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.1.
